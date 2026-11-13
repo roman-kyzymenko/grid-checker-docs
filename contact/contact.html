@@ -38,6 +38,9 @@
         <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></symbol>
         <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
         <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 3.8v16.4a1 1 0 0 0 1.5.86l13.6-8.2a1 1 0 0 0 0-1.72L7.5 2.94A1 1 0 0 0 6 3.8Z"/></symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+        <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
         <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
     </defs>
 </svg>
@@ -75,7 +78,10 @@
                     <a class="btn btn--primary" data-appstore href="https://apps.apple.com/ua/app/grid-checker-%D0%BF%D0%BE%D0%BB%D1%82%D0%B0%D0%B2%D0%B0/id6755684764?l=uk" target="_blank" rel="noopener"><svg class="icon"><use href="#i-download"/></svg><span data-i18n="ctaStore">Завантажити в App Store</span></a>
                     <a class="btn btn--ghost" data-play href="https://play.google.com/store/apps/details?id=com.rkapps.gridcheckerpl&amp;hl=uk" target="_blank" rel="noopener"><svg class="icon"><use href="#i-play"/></svg><span data-i18n="ctaPlay">Google Play</span></a>
                 </div>
-                <a class="text-link" href="#contact"><svg class="icon"><use href="#i-mail"/></svg><span data-i18n="ctaWrite">Зворотний зв’язок</span></a>
+                <div class="hero__links">
+                    <a class="text-link" href="#faq"><svg class="icon"><use href="#i-help"/></svg><span data-i18n="ctaFaq">Питання та відповіді</span></a>
+                    <a class="text-link" href="#contact"><svg class="icon"><use href="#i-mail"/></svg><span data-i18n="ctaWrite">Зворотний зв’язок</span></a>
+                </div>
             </div>
 
             <div class="hero__devices" aria-hidden="true">
@@ -119,7 +125,7 @@
                 <li class="feature">
                     <span class="feature__icon"><svg class="icon"><use href="#i-watch"/></svg></span>
                     <h3>Apple Watch</h3>
-                    <p data-i18n="f3Text">Застосунок, віджети в Динамічному стосі та ускладнення для циферблата.</p>
+                    <p data-i18n="f3Text">Застосунок, віджети в Динамічному стосі та функції циферблата.</p>
                 </li>
                 <li class="feature">
                     <span class="feature__icon"><svg class="icon"><use href="#i-pin"/></svg></span>
@@ -176,13 +182,13 @@
         <div class="wrap">
             <div class="section__head">
                 <h2>Apple Watch</h2>
-                <p data-i18n="watchLead">Застосунок, віджети в Динамічному стосі та ускладнення для будь-якого циферблата.</p>
+                <p data-i18n="watchLead">Застосунок, віджети в Динамічному стосі та функції для будь-якого циферблата.</p>
             </div>
         </div>
         <div class="gallery gallery--watches">
             <figure>
                 <div class="watch"><div class="watch__case"><span class="watch__crown"></span><span class="watch__side"></span><div class="watch__bezel"><img class="screen" data-shot="watch" data-n="1" src="img/uk/watch-1.webp" alt="" width="416" height="496" loading="lazy"></div></div></div>
-                <figcaption data-i18n="cap-w1">Циферблат із віджетом і ускладненнями</figcaption>
+                <figcaption data-i18n="cap-w1">Циферблат із віджетом і функціями</figcaption>
             </figure>
             <figure>
                 <div class="watch"><div class="watch__case"><span class="watch__crown"></span><span class="watch__side"></span><div class="watch__bezel"><img class="screen" data-shot="watch" data-n="6" src="img/uk/watch-6.webp" alt="" width="416" height="496" loading="lazy"></div></div></div>
@@ -198,16 +204,101 @@
             </figure>
             <figure>
                 <div class="watch"><div class="watch__case"><span class="watch__crown"></span><span class="watch__side"></span><div class="watch__bezel"><img class="screen" data-shot="watch" data-n="3" src="img/uk/watch-3.webp" alt="" width="416" height="496" loading="lazy"></div></div></div>
-                <figcaption data-i18n="cap-w3">Кутові ускладнення «Таймер» і «Час зміни»</figcaption>
+                <figcaption data-i18n="cap-w3">Функції «Таймер» і «Час зміни» в кутах</figcaption>
             </figure>
             <figure>
                 <div class="watch"><div class="watch__case"><span class="watch__crown"></span><span class="watch__side"></span><div class="watch__bezel"><img class="screen" data-shot="watch" data-n="2" src="img/uk/watch-2.webp" alt="" width="416" height="496" loading="lazy"></div></div></div>
-                <figcaption data-i18n="cap-w2">Ускладнення «Статус» в один рядок</figcaption>
+                <figcaption data-i18n="cap-w2">Функція «Статус» в один рядок</figcaption>
             </figure>
         </div>
     </section>
 
-    <section class="section section--alt" id="contact">
+    <section class="section section--alt" id="faq">
+        <div class="wrap">
+            <div class="section__head section__head--center">
+                <h2 data-i18n="faqTitle">Питання та відповіді</h2>
+                <p data-i18n="faqLead">Як додати віджети, вибрати чергу та що робити, якщо щось не працює.</p>
+            </div>
+
+            <div class="faq">
+                <details class="faq__item" name="faq">
+                    <summary>
+                        <span class="feature__icon"><svg class="icon"><use href="#i-phone"/></svg></span>
+                        <span class="faq__q" data-i18n="q1">Як користуватися віджетами на головному екрані?</span>
+                        <svg class="icon faq__chevron"><use href="#i-chevron"/></svg>
+                    </summary>
+                    <div class="faq__a" data-i18n="a1">
+                        <ol class="steps">
+                            <li><strong>Додайте віджет на головний екран</strong><p>Утримуйте палець на вільному місці головного екрана, натисніть «Редагувати», а потім «Додати віджет». Знайдіть «Grid Checker» і оберіть потрібний розмір віджета. Віджети також можна додати на сторінку віджетів ліворуч від головного екрана.</p></li>
+                            <li><strong>Виберіть чергу</strong><p>Утримуйте віджет і натисніть «Редагувати віджет». Торкніться «Черга» й оберіть чергу зі списку або введіть у поле пошуку назву вулиці чи номер черги.</p></li>
+                            <li><strong>Додайте більше віджетів</strong><p>Кожен віджет показує власну чергу, тож можна додати кілька віджетів для різних адрес. На головному екрані застосунку видно всі черги, які відстежують ваші віджети.</p></li>
+                            <li><strong>Переглядайте ваш графік</strong><p>Віджет показує поточний стан електропостачання та сьогоднішні відключення для своєї черги. Він оновлюється автоматично кожні 15 хвилин і після зміни графіка.</p></li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details class="faq__item" name="faq">
+                    <summary>
+                        <span class="feature__icon"><svg class="icon"><use href="#i-lock"/></svg></span>
+                        <span class="faq__q" data-i18n="q2">Як додати віджет на екран блокування?</span>
+                        <svg class="icon faq__chevron"><use href="#i-chevron"/></svg>
+                    </summary>
+                    <div class="faq__a" data-i18n="a2">
+                        <ol class="steps">
+                            <li><strong>Додайте віджет на екран блокування</strong><p>Утримуйте палець на екрані блокування, натисніть «Налаштувати» й оберіть екран блокування. Торкніться області віджетів під годинником і виберіть «Grid Checker» у списку.</p></li>
+                            <li><strong>Виберіть чергу</strong><p>Під час налаштування торкніться віджета один раз, щоб відкрити список віджетів, а потім торкніться його ще раз, щоб відкрити налаштування. Торкніться «Черга» й оберіть чергу або знайдіть свою вулицю.</p></li>
+                            <li><strong>Збережіть зміни</strong><p>Натисніть «Готово», щоб зберегти. Віджет на екрані блокування показує, чи є світло, і час поточного або наступного відключення.</p></li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details class="faq__item" name="faq">
+                    <summary>
+                        <span class="feature__icon"><svg class="icon"><use href="#i-watch"/></svg></span>
+                        <span class="faq__q" data-i18n="q3">Як користуватися застосунком на Apple Watch?</span>
+                        <svg class="icon faq__chevron"><use href="#i-chevron"/></svg>
+                    </summary>
+                    <div class="faq__a" data-i18n="a3">
+                        <ol class="steps">
+                            <li><strong>Встановіть застосунок на годинник</strong><p>Grid Checker для Apple Watch постачається разом із застосунком для iPhone. Якщо його ще немає на годиннику, відкрийте програму «Watch» на iPhone, знайдіть Grid Checker у розділі «Доступні програми» й натисніть «Інсталювати».</p></li>
+                            <li><strong>Оберіть свою чергу</strong><p>Відкрийте Grid Checker на годиннику й оберіть свою чергу. Щоб змінити її пізніше, прогорніть униз і натисніть «Вибрати чергу».</p></li>
+                            <li><strong>Переглядайте ваш графік</strong><p>Застосунок показує поточний стан електропостачання, шкалу часу та всі майбутні відключення на сьогодні й завтра. Натисніть круглу кнопку біля годинника, щоб завантажити найсвіжіший графік.</p></li>
+                            <li><strong>Додайте віджети в Динамічний стос</strong><p>На циферблаті прокрутіть колесо Digital Crown, щоб відкрити Динамічний стос, утримуйте його, натисніть «+» і знайдіть «Grid Checker». Оберіть «Таймлайн» — стан і шкала часу, «Список» — стан і два наступні відключення, або «Повний список» — три наступні відключення. Ці віджети також підходять для великих місць на деяких циферблатах.</p></li>
+                            <li><strong>Додайте функції на циферблат</strong><p>Утримуйте циферблат, натисніть «Змінити» й прогорніть до функцій циферблата. Торкніться місця й оберіть Grid Checker: «Таймер» показує, скільки лишилося до вимкнення чи відновлення світла, «Час зміни» — коли це станеться, а «Статус» — один рядок угорі циферблата. «Таймер» і «Час зміни» підходять для круглих і кутових місць.</p></li>
+                            <li><strong>Оберіть чергу для кожного віджета</strong><p>Кожен віджет і кожна функція циферблата показує власну чергу. Оберіть її під час додавання або пізніше — торкнувшись віджета під час редагування циферблата чи Динамічного стосу.</p></li>
+                        </ol>
+                        <div class="note"><svg class="icon"><use href="#i-refresh"/></svg><div><strong>Не вимикайте фонове оновлювання</strong><p>Оновлення графіка надходять на годинник швидше, якщо для Grid Checker увімкнено фонове оновлювання. Увімкніть його і на iPhone, і на годиннику: Параметри › Загальні › Фонове оновлювання. Якщо його вимкнено, застосунок і віджети все одно оновлюються, але рідше.</p></div></div>
+                    </div>
+                </details>
+
+                <details class="faq__item" name="faq">
+                    <summary>
+                        <span class="feature__icon"><svg class="icon"><use href="#i-refresh"/></svg></span>
+                        <span class="faq__q" data-i18n="q4">Віджети на циферблаті Apple Watch або в Динамічному стосі не оновлюються</span>
+                        <svg class="icon faq__chevron"><use href="#i-chevron"/></svg>
+                    </summary>
+                    <div class="faq__a" data-i18n="a4">
+                        <p>Відкрийте Grid Checker на годиннику й один раз натисніть круглу кнопку оновлення біля годинника. Застосунок завантажить свіжий графік, а віджети й функції циферблата оновляться разом із ним.</p>
+                        <p>Щоб оновлення надходили вчасно й надалі, перевірте, чи увімкнено фонове оновлювання для Grid Checker і на iPhone, і на годиннику: Параметри › Загальні › Фонове оновлювання.</p>
+                    </div>
+                </details>
+
+                <details class="faq__item" name="faq">
+                    <summary>
+                        <span class="feature__icon"><svg class="icon"><use href="#i-bell"/></svg></span>
+                        <span class="faq__q" data-i18n="q5">Як отримувати сповіщення про зміну графіка чи перед вимкненням світла?</span>
+                        <svg class="icon faq__chevron"><use href="#i-chevron"/></svg>
+                    </summary>
+                    <div class="faq__a" data-i18n="a5">
+                        <p>З міркувань надійності застосунок не надсилає сповіщень: система не гарантує, що вони прийдуть вчасно, а запізніле попередження про вимкнення світла може підвести.</p>
+                        <p>Для сповіщень скористайтеся Telegram ботом <a href="https://t.me/poltava_light_bot" target="_blank" rel="noopener">@poltava_light_bot</a>. Він повідомить, коли графік вашої черги зміниться, і попередить за 10 хвилин до вимкнення світла.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
         <div class="wrap">
             <div class="section__head">
                 <h2 data-i18n="contactTitle">Зворотний зв’язок</h2>

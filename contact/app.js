@@ -46,6 +46,38 @@
         'cap-w4': 'List in the Smart Stack',
         'cap-w3': '“Timer” and “Change time” corner complications',
         'cap-w2': 'One-line “Status” complication',
+        ctaFaq: 'FAQ',
+        faqTitle: 'Questions and answers',
+        faqLead: 'How to add widgets, choose a queue and what to do if something doesn’t work.',
+        q1: 'How do I use Home Screen widgets?',
+        a1: '<ol class="steps">' +
+            '<li><strong>Add widget to home screen</strong><p>Touch and hold an empty area of the home screen, tap ‘Edit’ and then ‘Add Widget’. Search for ‘Grid Checker’ and choose the widget size you prefer. Widgets can also be added to the widgets page to the left of the home screen.</p></li>' +
+            '<li><strong>Select a queue</strong><p>Touch and hold the widget and tap ‘Edit Widget’. Tap ‘Черга’ and pick a queue from the list, or type your street name or queue number in the search field to find it.</p></li>' +
+            '<li><strong>Add more widgets</strong><p>Each widget shows its own queue, so you can add several widgets for different addresses. The app’s main screen lists all queues your widgets are watching.</p></li>' +
+            '<li><strong>View your schedule</strong><p>The widget shows the current power status and today’s outages for its queue. It updates automatically every 15 minutes and when the schedule changes.</p></li>' +
+            '</ol>',
+        q2: 'How do I add a widget to the Lock Screen?',
+        a2: '<ol class="steps">' +
+            '<li><strong>Add widget to lock screen</strong><p>Touch and hold the lock screen, tap ‘Customize’ and choose the lock screen. Tap the widget area under the clock, then select ‘Grid Checker’ from the list.</p></li>' +
+            '<li><strong>Select a queue</strong><p>While customizing, tap the widget once to open the widgets list, then tap the widget again to open its settings. Tap ‘Черга’ and pick a queue or search for your street.</p></li>' +
+            '<li><strong>Save changes</strong><p>Tap ‘Done’ to save. The lock screen widget shows whether power is on and the time of the current or next outage.</p></li>' +
+            '</ol>',
+        q3: 'How do I use the Apple Watch app?',
+        a3: '<ol class="steps">' +
+            '<li><strong>Install the watch app</strong><p>Grid Checker for Apple Watch comes with the iPhone app. If it isn’t on your watch yet, open the Watch app on iPhone, find Grid Checker under ‘Available Apps’ and tap ‘Install’.</p></li>' +
+            '<li><strong>Choose your queue</strong><p>Open Grid Checker on the watch and pick your queue. To change it later, scroll down and tap ‘Select queue’.</p></li>' +
+            '<li><strong>View your schedule</strong><p>The app shows the current power status, a timeline and all upcoming outages for today and tomorrow. Tap the round button next to the clock to load the latest schedule.</p></li>' +
+            '<li><strong>Add widgets to the Smart Stack</strong><p>Turn the Digital Crown on the watch face to open the Smart Stack, touch and hold it, tap ‘+’ and find ‘Grid Checker’. Choose ‘Timeline’ for the status and a timeline, ‘List’ for the status and the next two outages, or ‘Full list’ for the next three outages. These widgets also fit the large slots of some watch faces.</p></li>' +
+            '<li><strong>Add complications to the watch face</strong><p>Touch and hold the watch face, tap ‘Edit’ and swipe to the complications. Tap a slot and choose Grid Checker: ‘Timer’ shows how long until the power goes off or comes back, ‘Change time’ shows when that happens, and ‘Status’ is a single line for the top of the face. ‘Timer’ and ‘Change time’ fit round and corner slots.</p></li>' +
+            '<li><strong>Choose a queue for each widget</strong><p>Every widget and complication shows its own queue. Choose it when you add one, or later by tapping it while editing the watch face or the Smart Stack.</p></li>' +
+            '</ol>' +
+            '<div class="note"><svg class="icon"><use href="#i-refresh"/></svg><div><strong>Keep Background App Refresh on</strong><p>Schedule updates reach the watch faster when Background App Refresh is on for Grid Checker. Turn it on both on iPhone and on the watch, in Settings › General › Background App Refresh. With it off, the app and widgets still update, but less often.</p></div></div>',
+        q4: 'Apple Watch face or Smart Stack widgets aren’t updating',
+        a4: '<p>Open Grid Checker on the watch and tap the round refresh button next to the clock once. The app loads the latest schedule, and the widgets and complications update with it.</p>' +
+            '<p>To keep updates arriving on time, make sure Background App Refresh is on for Grid Checker on both iPhone and the watch: Settings › General › Background App Refresh.</p>',
+        q5: 'How do I get notified about schedule changes or before the power goes off?',
+        a5: '<p>For reliability reasons, the app doesn’t send notifications: the system doesn’t guarantee they arrive on time, and a late warning about a power outage could let you down.</p>' +
+            '<p>For notifications, use the Telegram bot <a href="https://t.me/poltava_light_bot" target="_blank" rel="noopener">@poltava_light_bot</a>. It tells you when your queue’s schedule changes and warns you 10 minutes before the power goes off.</p>',
         contactTitle: 'Get in touch',
         contactLead: 'Have a question, found a bug or have an idea? Write to me.',
         emailLabel: 'Email',
@@ -216,6 +248,94 @@
             }, function () {
                 location.href = 'mailto:' + btn.dataset.copy;
             });
+        });
+    });
+
+    // ---------- FAQ accordion ----------
+    // Animates height on open/close, keeps one item open at a time
+    // and scrolls the opened item into view. Without JS the native
+    // <details name="faq"> behaviour still works.
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var faqItems = Array.prototype.slice.call(document.querySelectorAll('.faq__item'));
+    var DURATION = 300;
+    var EASING = 'cubic-bezier(.2, .7, .2, 1)';
+
+    function closedHeight(item) {
+        var summary = item.querySelector('summary');
+        return summary.offsetHeight + (item.offsetHeight - item.clientHeight);
+    }
+
+    function runHeight(item, from, to, onDone) {
+        if (item._anim) item._anim.cancel();
+        if (reduceMotion.matches || !item.animate) { onDone(); return; }
+        var anim = item.animate(
+            { height: [from + 'px', to + 'px'] },
+            { duration: DURATION, easing: EASING }
+        );
+        item._anim = anim;
+        anim.onfinish = function () { item._anim = null; onDone(); };
+        anim.oncancel = function () { if (item._anim === anim) item._anim = null; };
+    }
+
+    function openItem(item) {
+        var from = item.offsetHeight;
+        item.open = true;
+        item._closing = false;
+        var to = item.offsetHeight;
+
+        var answer = item.querySelector('.faq__a');
+        if (answer && answer.animate && !reduceMotion.matches) {
+            answer.animate(
+                { opacity: [0, 1], transform: ['translateY(-6px)', 'none'] },
+                { duration: DURATION, easing: EASING }
+            );
+        }
+        // Measure on the next frame, after a sibling's close has also settled
+        runHeight(item, from, to, function () {
+            requestAnimationFrame(function () { revealItem(item); });
+        });
+    }
+
+    function closeItem(item) {
+        var from = item.offsetHeight;
+        item._closing = true;
+        runHeight(item, from, closedHeight(item), function () {
+            if (item._closing) item.open = false;
+            item._closing = false;
+        });
+    }
+
+    function revealItem(item) {
+        var topbar = document.querySelector('.topbar');
+        var top = (topbar ? topbar.offsetHeight : 0) + 12;
+        var bottom = window.innerHeight - 16;
+        var rect = item.getBoundingClientRect();
+        var delta = 0;
+
+        if (rect.height > bottom - top || rect.top < top) {
+            delta = rect.top - top;            // too tall or hidden above: align its top
+        } else if (rect.bottom > bottom) {
+            delta = rect.bottom - bottom;      // cut off below: scroll just enough
+        }
+        if (Math.abs(delta) > 1) {
+            window.scrollBy({ top: delta, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+        }
+    }
+
+    faqItems.forEach(function (item) {
+        item.removeAttribute('name');          // exclusivity is handled here, with animation
+        item.querySelector('summary').addEventListener('click', function (e) {
+            e.preventDefault();
+            var isOpen = item.open && !item._closing;
+            if (isOpen) {
+                closeItem(item);
+            } else {
+                faqItems.forEach(function (other) {
+                    if (other !== item && other.open && !other._closing) closeItem(other);
+                });
+                openItem(item);
+            }
         });
     });
 
