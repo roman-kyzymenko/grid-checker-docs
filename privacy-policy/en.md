@@ -3,12 +3,12 @@
 [English version]
 [Українська версія](uk)
 
-_Last updated: 2025-11-24_
+_Last updated: 2026-11-13_
 
 "Grid Checker - Полтава" is a private, non-government project. It is not affiliated with any government body, utility provider, or municipal organization in Ukraine.  
 The app provides a convenient way to view publicly available outage schedules and related data.
 
-This Privacy Policy describes how the app handles data on iOS and Android.
+This Privacy Policy describes how the app handles data on iOS (iPhone and Apple Watch) and Android.
 
 ---
 
@@ -23,7 +23,7 @@ Grid Checker - Полтава:
 - does **not** serve ads
 - does **not** process payments
 - uses only publicly available data provided by the developer’s backend
-- communicates only with its own API servers
+- communicates only with its own API servers and with the push services described in section 4
 
 Your data is never sold, shared, or used for tracking.
 
@@ -40,15 +40,18 @@ Your data is never sold, shared, or used for tracking.
 - Usage analytics
 - Any data that can identify you
 
+Tokens that Apple and Google generate to deliver background messages are described in section 4. They are not collected by the developer.
+
 ### We DO handle:
 
 #### 2.1. Technical Request Data (standard HTTP logs)
 
-When the app or widget requests data from the backend, the server receives standard technical metadata automatically sent by your device:
+When the app, a widget or the Apple Watch app requests data from the backend, the server receives standard technical metadata automatically sent by your device:
 
 - IP address
 - User agent (device model, OS version)
 - Timestamp of request
+- The requested address (for example, the date of the schedule or the street name you searched for)
 
 This information is used only for server security, availability, and rate limiting.  
 It is **not** linked to a personal profile and **not** used for tracking.
@@ -74,11 +77,13 @@ The app uses the developer’s own backend to fetch:
 - street lists for searching
 - widget update data
 
-No private user data is transmitted.
+When you search for your queue by street name, the street name you type is sent to the backend to find matching queues. It is used only to answer that search and is not linked to you.
 
-### 3.2. Widget Behavior (iOS & Android)
+No other user data is transmitted.
 
-The widget may:
+### 3.2. Widget Behavior (iOS, watchOS & Android)
+
+Widgets and Apple Watch complications may:
 
 - refresh periodically, based on OS rules
 - perform background data fetches
@@ -93,12 +98,21 @@ Widgets do **not** collect or store personal information.
 The app may provide links to external services such as the developer’s Telegram bot.  
 Interactions with external services are governed by their respective privacy policies.
 
+### 3.4. Apple Watch
+
+The Apple Watch app shows the same publicly available schedules as the iPhone app. It gets them in two ways:
+
+- it requests them from the developer’s backend itself, like the iPhone app
+- your iPhone sends it the latest schedule and the app language using Apple’s WatchConnectivity, directly between your own devices, without passing through the developer’s servers
+
+No personal data is exchanged between the iPhone and the Apple Watch.
+
 ---
 
 ## 4. Push Notifications / Silent Background Messages
 
 The app does **not** send visible notifications to users.  
-However, both the iOS and Android versions use **silent background messages** to update widget data or trigger refreshes.
+However, the iOS (iPhone and Apple Watch) and Android versions use **silent background messages** to update widget data or trigger refreshes.
 
 To deliver these messages, the operating system or Firebase service may generate an **opaque device token** (Apple) or **registration token** (Google):
 
@@ -117,16 +131,19 @@ Silent background messages:
 
 ---
 
-## 4.1. iOS (APNs Silent Push)
+## 4.1. iOS and watchOS (FCM via APNs)
 
-The iOS version uses Apple Push Notification service (APNs) **only** for:
+The iPhone app and the Apple Watch app use Firebase Cloud Messaging (FCM) **only** for:
 
-- receiving silent “content-available” messages
-- refreshing widget data in the background
+- receiving topic-based silent background messages
+- refreshing schedule data in the app, widgets and watch complications
 
-iOS may generate a device token to route these messages.  
-This token is handled entirely by Apple’s infrastructure.  
-The developer does **not** access, use, or store this token.
+On Apple devices, these messages are delivered through Apple Push Notification service (APNs).  
+To route them, Apple generates a device token, and Firebase generates a registration token and an installation ID.  
+These are managed by Apple and Google. The developer does **not** access, use, or store them.
+
+The Firebase Cloud Messaging SDK, which is included in the app only to receive these messages, may send Google limited technical diagnostic data about how the push service itself works (for example, whether messages are delivered).  
+This is Google’s diagnostics of its own service, not analytics of how you use the app. It is not linked to you and is not used for tracking or advertising. The developer can see only aggregated delivery statistics in the Firebase console, never data about individual users or devices.
 
 ---
 
@@ -137,8 +154,11 @@ The Android version uses Firebase Cloud Messaging (FCM) **only** for:
 - receiving topic-based silent background messages
 - refreshing widget content automatically
 
-Firebase may generate a registration token as part of FCM functionality.  
-This token is managed by Google and is not used or stored by the developer.
+Firebase may generate a registration token and an installation ID as part of FCM functionality.  
+These are managed by Google and are not used or stored by the developer.
+
+As on iOS, the Firebase Cloud Messaging SDK may send Google limited technical diagnostic data about how the push service itself works (for example, whether messages are delivered).  
+This is Google’s diagnostics of its own service, not analytics of how you use the app. It is not linked to you and is not used for tracking or advertising. The developer can see only aggregated delivery statistics in the Firebase console, never data about individual users or devices.
 
 No visible notifications are shown on either platform.
 
@@ -146,14 +166,15 @@ No visible notifications are shown on either platform.
 
 ## 5. Platform-Specific Information
 
-### 5.1. iOS
+### 5.1. iOS and watchOS
 
-The iOS version may use the following system features:
+The iPhone and Apple Watch apps may use the following system features:
 
-- **WidgetKit** — displays schedule data in a widget
-- **Background app refresh** — for periodic schedule updates
-- **Silent push notifications (APNs)** — to trigger widget refreshes
-- **App Groups** — for storing widget shared settings (non-personal data only)
+- **WidgetKit** — displays schedule data in Home Screen, Lock Screen and Smart Stack widgets and in watch face complications
+- **Background app refresh** — for periodic schedule updates on iPhone and Apple Watch
+- **Firebase Cloud Messaging (via APNs)** — silent messages that trigger refreshes
+- **App Groups** — for storing settings and cached schedules shared between the app and its widgets (non-personal data only)
+- **WatchConnectivity** — sends the latest schedule and the app language from your iPhone to your Apple Watch
 
 No personal data is stored in App Groups.
 
@@ -172,13 +193,14 @@ No personal or device-identifiable data is stored.
 
 ## 6. Third-Party Services
 
-### iOS
-- Apple Push Notification service (APNs)
+### iOS and watchOS
+- Firebase Cloud Messaging (Google), delivered through Apple Push Notification service (APNs)
 
 ### Android
 - Firebase Cloud Messaging (FCM)
 
-No analytics or tracking services are used.
+No analytics or tracking services are used.  
+The only exception to note is the Firebase Cloud Messaging SDK’s own diagnostics of the push service, described in sections 4.1 and 4.2.
 
 ---
 
@@ -186,10 +208,11 @@ No analytics or tracking services are used.
 
 The app stores only:
 
-- widget settings (language, UI preferences)
+- widget settings (language, selected queues, UI preferences)
 - last retrieved schedule data
+- on Apple Watch, a copy of the schedule received from the backend or from your iPhone
 
-Stored locally on your device.  
+Stored locally on your devices.  
 Nothing is uploaded or shared with third parties.
 
 ---
@@ -214,7 +237,7 @@ Because the app does not collect or store personal data:
 - there is no data to request, export, delete, or modify
 - there is no account to manage
 
-If you uninstall the app, all local data (widget settings & cached schedule) is deleted automatically.
+If you uninstall the app, all local data (widget settings & cached schedule) is deleted automatically, including on Apple Watch.
 
 ---
 
