@@ -76,8 +76,8 @@
         a4: '<p>Open Grid Checker on the watch and tap the round refresh button next to the clock once. The app loads the latest schedule, and the widgets and complications update with it.</p>' +
             '<p>To keep updates arriving on time, make sure Background App Refresh is on for Grid Checker on both iPhone and the watch: Settings › General › Background App Refresh.</p>',
         q5: 'How do I get notified about schedule changes or before the power goes off?',
-        a5: '<p>For reliability reasons, the app doesn’t send notifications: the system doesn’t guarantee they arrive on time, and a late warning about a power outage could let you down.</p>' +
-            '<p>For notifications, use the Telegram bot <a href="https://t.me/poltava_light_bot" target="_blank" rel="noopener">@poltava_light_bot</a>. It tells you when your queue’s schedule changes and warns you 10 minutes before the power goes off.</p>',
+        a5: '<p>For reliability reasons, the app doesn’t send notifications: the system only gives it low-priority background updates, so a warning could arrive late.</p>' +
+            '<p>Use the Telegram bot <a href="https://t.me/poltava_light_bot" target="_blank" rel="noopener">@poltava_light_bot</a> instead — it sends ordinary messages that arrive immediately. The bot tells you when your queue’s schedule changes and warns you 10 minutes before the power goes off.</p>',
         contactTitle: 'Get in touch',
         contactLead: 'Have a question, found a bug or have an idea? Write to me.',
         emailLabel: 'Email',
